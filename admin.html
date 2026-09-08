@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Panel TreneSolar</title>
+<link rel="icon" href="img/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=9">
+</head>
+<body class="admin-body">
+
+<!-- LOGIN -->
+<div class="login-wrap" id="loginView">
+  <div class="login-card">
+    <div class="brand">
+      <img class="brand-mark" src="img/logo-icon.png" alt="TreneSolar">
+      <div class="brand-name">Trene<span>Solar</span></div>
+    </div>
+    <span class="field-label">Correo</span>
+    <input class="input" id="loginEmail" type="email" placeholder="tu@correo.com">
+    <span class="field-label">Contraseña</span>
+    <input class="input" id="loginPassword" type="password" placeholder="••••••••">
+    <button class="btn btn-primary" id="loginBtn" style="width:100%; justify-content:center;">Entrar</button>
+    <div class="form-msg" id="loginMsg"></div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="admin-shell" id="dashboardView" style="display:none;">
+  <aside class="admin-side">
+    <div class="brand">
+      <img class="brand-mark" src="img/logo-icon.png" alt="TreneSolar">
+      <div class="brand-name">Trene<span>Solar</span></div>
+    </div>
+    <a href="index.html" class="admin-back">← Ver sitio principal</a>
+    <nav class="admin-nav">
+      <a data-tab="resumen" class="active">Resumen</a>
+      <a data-tab="citas">Citas</a>
+      <a data-tab="clientes">Clientes</a>
+      <a data-tab="agenda">Bloquear agenda</a>
+      <a data-tab="resenas">Reseñas</a>
+      <a data-tab="config">Configuración</a>
+      <a id="logoutBtn" style="margin-top:24px;">Cerrar sesión</a>
+    </nav>
+  </aside>
+
+  <main class="admin-main">
+
+    <!-- RESUMEN / ESTADÍSTICAS -->
+    <section id="tab-resumen">
+      <h2 style="margin-bottom:22px;">Resumen</h2>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="num" id="statCompletados">—</div><div class="label">Trabajos completados</div></div>
+        <div class="stat-card"><div class="num" id="statActivas">—</div><div class="label">Citas activas</div></div>
+        <div class="stat-card"><div class="num" id="statCalificacion">—</div><div class="label">Calificación promedio</div></div>
+        <div class="stat-card"><div class="num" id="statReferidos">—</div><div class="label">Clientes por referido</div></div>
+      </div>
+      <div class="panel">
+        <h3>Próximas citas</h3>
+        <table id="tablaProximas"><thead><tr><th>Fecha</th><th>Hora</th><th>Servicio</th><th>Cliente</th><th>Estado</th></tr></thead><tbody></tbody></table>
+      </div>
+    </section>
+
+    <!-- CITAS -->
+    <section id="tab-citas" style="display:none;">
+      <h2 style="margin-bottom:22px;">Citas</h2>
+      <div class="panel">
+        <table id="tablaCitas">
+          <thead><tr><th>Fecha</th><th>Hora</th><th>Servicio</th><th>Cliente</th><th>Teléfono</th><th>Estado</th><th>Acciones</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CLIENTES -->
+    <section id="tab-clientes" style="display:none;">
+      <h2 style="margin-bottom:22px;">Clientes</h2>
+      <div class="panel">
+        <table id="tablaClientes">
+          <thead><tr><th>Nombre</th><th>Teléfono</th><th>Correo</th><th>Dirección</th><th>Notas</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- BLOQUEAR AGENDA -->
+    <section id="tab-agenda" style="display:none;">
+      <h2 style="margin-bottom:22px;">Bloquear agenda</h2>
+      <div class="panel" style="max-width:420px;">
+        <span class="field-label">Fecha a bloquear</span>
+        <input class="input" id="blockDate" type="date">
+        <span class="field-label">Hora (opcional — vacío bloquea el día completo)</span>
+        <input class="input" id="blockTime" type="time">
+        <span class="field-label">Motivo (opcional)</span>
+        <input class="input" id="blockReason" placeholder="Ej: mantenimiento de vehículo">
+        <button class="btn btn-primary" id="addBlockBtn" style="width:100%; justify-content:center;">Bloquear</button>
+      </div>
+      <div class="panel">
+        <h3>Bloqueos activos</h3>
+        <table id="tablaBloqueos"><thead><tr><th>Fecha</th><th>Hora</th><th>Motivo</th><th></th></tr></thead><tbody></tbody></table>
+      </div>
+    </section>
+
+    <!-- RESEÑAS -->
+    <section id="tab-resenas" style="display:none;">
+      <h2 style="margin-bottom:22px;">Reseñas</h2>
+      <div class="panel">
+        <h3>Pendientes de aprobación</h3>
+        <table id="tablaResenasPendientes"><thead><tr><th>Cliente</th><th>Calificación</th><th>Comentario</th><th>Acciones</th></tr></thead><tbody></tbody></table>
+      </div>
+      <div class="panel">
+        <h3>Publicadas en el sitio</h3>
+        <table id="tablaResenasAprobadas"><thead><tr><th>Cliente</th><th>Calificación</th><th>Comentario</th><th></th></tr></thead><tbody></tbody></table>
+      </div>
+    </section>
+
+    <!-- CONFIGURACIÓN -->
+    <section id="tab-config" style="display:none;">
+      <h2 style="margin-bottom:22px;">Configuración</h2>
+      <div class="panel" style="max-width:420px;">
+        <h3>Aviso de citas por WhatsApp</h3>
+        <span class="field-label">Tu número de WhatsApp (con código de país, solo dígitos)</span>
+        <input class="input" id="cfgPhone" placeholder="Ej: 5353578768">
+        <span class="field-label">APIKEY de CallMeBot</span>
+        <input class="input" id="cfgApikey" placeholder="Ej: 7165605">
+        <button class="btn btn-primary" id="saveConfigBtn" style="width:100%; justify-content:center;">Guardar</button>
+        <div class="form-msg" id="configMsg"></div>
+      </div>
+      <div class="panel" style="max-width:420px;">
+        <h3>Aviso por Telegram</h3>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px;">
+          Gratis e ilimitado. Crea un bot con <strong>@BotFather</strong> en
+          Telegram (envíale <code>/newbot</code> y sigue las instrucciones),
+          copia el token. Luego escríbele cualquier mensaje a tu bot nuevo y
+          entra a
+          <code>https://api.telegram.org/bot&lt;TOKEN&gt;/getUpdates</code>
+          para encontrar tu <code>chat_id</code>.
+        </p>
+        <span class="field-label">Token del bot</span>
+        <input class="input" id="cfgTelegramToken" placeholder="123456:ABC-...">
+        <span class="field-label">Tu Chat ID</span>
+        <input class="input" id="cfgTelegramChatId" placeholder="Ej: 987654321">
+        <button class="btn btn-primary" id="saveTelegramConfigBtn" style="width:100%; justify-content:center;">Guardar</button>
+        <div class="form-msg" id="telegramConfigMsg"></div>
+      </div>
+      <div class="panel" style="max-width:420px;">
+        <h3>Aviso de citas por correo</h3>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px;">
+          Gratis con Resend (3,000 correos/mes). Crea una cuenta en
+          <strong>resend.com</strong> con el correo del dueño del negocio,
+          confirma tu correo, y genera una API Key desde su panel — no hace
+          falta dominio propio.
+        </p>
+        <span class="field-label">Correo del dueño (donde llegan los avisos)</span>
+        <input class="input" id="cfgEmail" placeholder="dueño@correo.com">
+        <span class="field-label">API Key de Resend</span>
+        <input class="input" id="cfgResendKey" placeholder="re_xxxxxxxxxxxx">
+        <button class="btn btn-primary" id="saveEmailConfigBtn" style="width:100%; justify-content:center;">Guardar</button>
+        <div class="form-msg" id="emailConfigMsg"></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script type="module" src="js/admin.js?v=9"></script>
+</body>
+</html>
