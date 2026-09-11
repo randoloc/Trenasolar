@@ -1,4 +1,4 @@
-import { supabase, isConfigured } from "./supabase-client.js?v=9";
+import { supabase, isConfigured } from "./supabase-client.js?v=10";
 import QRCode from "https://esm.sh/qrcode@1.5.3";
 
 // ---------- Config de horarios ----------
@@ -161,14 +161,12 @@ document.getElementById("confirmBtn").addEventListener("click", async () => {
   msg.className = "form-msg";
 
   const full_name = document.getElementById("clientName").value.trim();
-  const countryCode = document.getElementById("clientCountryCode").value.trim().replace(/[^\d+]/g, "");
-  const phoneRaw = document.getElementById("clientPhone").value.trim();
-  const phone = phoneRaw.startsWith("+") ? phoneRaw : `${countryCode || "+53"} ${phoneRaw}`;
+  const phone = document.getElementById("clientPhone").value.trim();
   const email = document.getElementById("clientEmail").value.trim();
   const address = document.getElementById("clientAddress").value.trim();
   const notes = document.getElementById("clientNotes").value.trim();
 
-  if (!full_name || !phoneRaw || !address) {
+  if (!full_name || !phone || !address) {
     msg.textContent = "Completa nombre, teléfono y dirección.";
     msg.classList.add("err");
     return;
