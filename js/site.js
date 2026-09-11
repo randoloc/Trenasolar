@@ -1,4 +1,4 @@
-import { supabase, isConfigured } from "./supabase-client.js?v=10";
+import { supabase, isConfigured } from "./supabase-client.js?v=12";
 import QRCode from "https://esm.sh/qrcode@1.5.3";
 
 // ---------- Config de horarios ----------

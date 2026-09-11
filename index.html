@@ -8,7 +8,7 @@
 <link rel="icon" href="img/logo-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=10">
+<link rel="stylesheet" href="css/styles.css?v=12">
 </head>
 <body>
 
@@ -119,10 +119,10 @@
       </div>
       <div>
         <span class="booking-step">Paso 2 — Tus datos</span>
-        <input class="input" id="clientName" placeholder="Nombre completo" required>
-        <input class="input" id="clientPhone" placeholder="Teléfono con código de país (ej: +53 5354 1234)" required>
-        <input class="input" id="clientEmail" placeholder="Correo (opcional)">
-        <input class="input" id="clientAddress" placeholder="Dirección de la instalación" required>
+        <input class="input" id="clientName" name="name" autocomplete="name" placeholder="Nombre completo" required>
+        <input class="input" id="clientPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Teléfono con código de país (ej: +53 5354 1234)" required>
+        <input class="input" id="clientEmail" name="email" type="email" autocomplete="email" placeholder="Correo (opcional)">
+        <input class="input" id="clientAddress" name="address" autocomplete="street-address" placeholder="Dirección de la instalación" required>
         <textarea class="input" id="clientNotes" placeholder="Describe el trabajo: qué necesitas y dónde (opcional)" rows="2"></textarea>
 
         <div class="booking-summary">
@@ -174,7 +174,7 @@
 
     <div class="review-form">
       <h3 style="margin-bottom:14px; font-size:1.02rem;">¿Ya te instalamos algo? Cuéntanos qué tal.</h3>
-      <input class="input" id="reviewName" placeholder="Tu nombre">
+      <input class="input" id="reviewName" name="name" autocomplete="name" placeholder="Tu nombre">
       <div class="star-picker" id="starPicker">
         <button data-star="1">★</button><button data-star="2">★</button><button data-star="3">★</button><button data-star="4">★</button><button data-star="5">★</button>
       </div>
@@ -203,6 +203,6 @@
   </div>
 </footer>
 
-<script type="module" src="js/site.js?v=10"></script>
+<script type="module" src="js/site.js?v=12"></script>
 </body>
 </html>

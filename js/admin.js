@@ -1,4 +1,4 @@
-import { supabase, isConfigured } from "./supabase-client.js?v=10";
+import { supabase, isConfigured } from "./supabase-client.js?v=12";
 
 const loginView = document.getElementById("loginView");
 const dashboardView = document.getElementById("dashboardView");

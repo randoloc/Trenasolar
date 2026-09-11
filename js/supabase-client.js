@@ -1,5 +1,5 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from "./config.js?v=10";
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from "./config.js?v=12";
 
 // Si las credenciales todavía son las de ejemplo, no intentamos conectar:
 // evita que todo el sitio se caiga en silencio y en su lugar avisamos con claridad.
